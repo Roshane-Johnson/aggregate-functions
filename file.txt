@@ -1,0 +1,38 @@
+Payroll System
+
+Employee 
+- First Name 
+- Last Name
+- Salary
+- Pay Day
+- Bonus
+
+
+Database Values
+DB Name: aggregate_func
+Employees
+- first_nm
+- last_nm
+- salary
+- pay_day
+- bonus
+
+router.get('/employee/stats', (req, res) => {
+    let sql = `select round(avg(salary)) as average from employee; 
+                select max(salary) as maximum from employees;
+                    select min(salary) as minimum from employees;
+                    select first_name, last_name from employees group by first_name order by min(salart);
+                    select first_name, last_name from employees group by first_name order by min(salary) desc`
+    let query = connection.query(sql, (err, result) => {
+        console.log(result)
+        res.render('stats', {
+            avg: result[0][0].average,
+            max: result[1][0].maximum,
+            min: result[2][0].minimum,
+            worstFF: result[3][0].first_name,
+            worstFL: result[3][0].last_name,
+            bestFF: result[4][0].first_name,
+            bestFL:  result[4][0].last_name 
+        })
+    })
+})

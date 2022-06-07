@@ -1,0 +1,4 @@
+Employee 
+- First Name 
+- Last Name
+- Income

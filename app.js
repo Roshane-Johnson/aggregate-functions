@@ -34,6 +34,7 @@ app.use(
 
 // View Routes
 app.use('/', require('./routes/index'))
+app.use('/employee', require('./routes/employee'))
 
 // Start express app
 app.listen(PORT, () => {
