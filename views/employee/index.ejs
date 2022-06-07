@@ -1,32 +1,60 @@
-<table>
-	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Salary</th>
-		<th>Pay Day</th>
-		<th>Bonus</th>
-		<th>Action</th>
-	</tr>
-	<tbody>
-		<% employees.forEach(employee => { %>
-		<tr>
-			<td><%= employee.first_nm %></td>
-			<td><%= employee.last_nm %></td>
-			<td><%= employee.salary %></td>
-			<td><%= employee.pay_day %></td>
-			<td><%= employee.bonus %></td>
-			<td>
-				<a href="/employee/edit/<%=employee.id%>">Edit</a>
-				<a href="/employee/delete/<%=employee.id%>">Delete</a>
-			</td>
-		</tr>
-		<% }) %>
-	</tbody>
-</table>
-<label for="">Total Salary: <%=aggregate[0].Total_salary%></span></label><span><br>
-<label for="">No. of Employees: <%=aggregate[0].Total_Employees%></span></label><span><br>
-<label for="">Salary Average: <%=aggregate[0].average_salary%></span></label><span><br>
-<label for="">Minimum Salary: <%=aggregate[0].lowest_salary%></span></label><span><br>
-<label for="">Maximum Salary: <%=aggregate[0].highest_salary%></span></label><span>
+<div class="w-10/12 mx-auto mt-10">
+	<div class="grid grid-cols-3 gap-4 mb-10">
+		<div class="bg-purple-500 text-white text-lg py-10 rounded-md flex flex-col justify-center items-center hover:scale-[1.03] transition-all">
+			<p class="font-bold"><%= aggregate.total_salary %></p>
+			<h2 class="">Total Salary</h2>
+		</div>
+		<div class="bg-purple-500 text-white text-lg py-10 rounded-md flex flex-col justify-center items-center hover:scale-[1.03] transition-all">
+			<p class="font-bold"><%= aggregate.total_employees %></p>
+			<h2 class="">Total Employees</h2>
+		</div>
+		<div class="bg-purple-500 text-white text-lg py-10 rounded-md flex flex-col justify-center items-center hover:scale-[1.03] transition-all">
+			<p class="font-bold"><%= aggregate.average_salary %></p>
+			<h2 class="">Average Salary</h2>
+		</div>
+		<div class="bg-purple-500 text-white text-lg py-10 rounded-md flex flex-col justify-center items-center hover:scale-[1.03] transition-all">
+			<p class="font-bold"><%= aggregate.lowest_salary %></p>
+			<h2 class="">Lowest Salary</h2>
+		</div>
+		<div class="bg-purple-500 text-white text-lg py-10 rounded-md flex flex-col justify-center items-center hover:scale-[1.03] transition-all">
+			<p class="font-bold"><%= aggregate.highest_salary %></p>
+			<h2 class="">Highest Salary</h2>
+		</div>
+	</div>
 
-
+	<div class="mb-6">
+		<h1 class="font-bold text-2xl text-slate-600">Employees</h1>
+	</div>
+	<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+		<table class="w-full text-sm text-left text-gray-500">
+			<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+				<tr>
+					<th scope="col" class="px-6 py-3">First Name</th>
+					<th scope="col" class="px-6 py-3">Last Name</th>
+					<th scope="col" class="px-6 py-3">Salary</th>
+					<th scope="col" class="px-6 py-3">Payday</th>
+					<th scope="col" class="px-6 py-3">Bonus</th>
+					<th scope="col" class="px-6 py-3">Edit</th>
+					<th scope="col" class="px-6 py-3">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% employees.forEach(employee => { %>
+				<tr class="bg-white border-b">
+					<td class="px-6 py-4"><%= employee.first_nm %></td>
+					<td class="px-6 py-4"><%= employee.last_nm %></td>
+					<td class="px-6 py-4"><%= employee.salary %></td>
+					<td class="px-6 py-4"><%= employee.pay_day %></td>
+					<td class="px-6 py-4"><%= employee.bonus %></td>
+					<td class="px-6 py-4 text-left">
+						<a href="/employee/edit/<%=employee.id%>" class="font-medium text-blue-600 hover:underline">Edit</a>
+					</td>
+					<td class="px-6 py-4 text-left">
+						<a href="/employee/delete/<%=employee.id%>" class="font-medium text-blue-600 hover:underline">Delete</a>
+					</td>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+</div>

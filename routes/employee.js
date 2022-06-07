@@ -8,20 +8,29 @@ const DB = require('../lib/db')
  */
 router.get('/', (req, res) => {
 	const query = 'SELECT * FROM employees LIMIT 10000;'
-	const query2 = `SELECT SUM(salary) AS Total_salary,
-	                count(id) AS Total_Employees, 
+	const query2 = `SELECT SUM(salary) AS total_salary,
+	                COUNT(id) AS total_employees, 
 					AVG(salary) AS average_salary,
-					MIN(salary)AS lowest_salary,
-					MAX(salary)AS highest_salary FROM employees`
+					MIN(salary) AS lowest_salary,
+					MAX(salary) AS highest_salary FROM employees`
 	DB.query(query, (err, rows) => {
 		if (err) throw err
+
 		DB.query(query2, (err, aggregateRows) => {
 			if (err) throw err
-			res.render('employee/index', {
-				page_title: 'Employees',
-				employees: rows,
-				aggregate: aggregateRows,
+
+			// Formating values to currency
+			aggregateRows[0].total_salary = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(aggregateRows[0].total_salary)
+			aggregateRows[0].average_salary = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(aggregateRows[0].average_salary)
+			aggregateRows[0].lowest_salary = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(aggregateRows[0].lowest_salary)
+			aggregateRows[0].highest_salary = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(aggregateRows[0].highest_salary)
+
+			rows.forEach((row) => {
+				row.salary = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(row.salary)
+				row.bonus = Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(row.bonus)
 			})
+
+			res.render('employee/index', { page_title: 'Employees', employees: rows, aggregate: aggregateRows[0] })
 		})
 	})
 })

@@ -1,29 +1,26 @@
-<div class="">
-	<form class="grid grid-cols-2" action="/employee/create" method="post">
-		<div class="">
-			<label for="">First Name</label>
+<div class="w-1/2 mx-auto mt-10">
+	<form class="grid grid-cols-2 gap-4" action="/employee/create" method="post">
+		<div class="flex flex-col">
+			<label class="mb-2" for="first_nm">First Name</label>
 			<input type="text" name="first_nm" />
 		</div>
-
-		<div>
-			<label for="">last Name</label>
+		<div class="flex flex-col">
+			<label class="mb-2" for="last_nm">Last Name</label>
 			<input type="text" name="last_nm" />
 		</div>
-
-		<div>
-			<label for="">Salary</label>
+		<div class="flex flex-col">
+			<label class="mb-2" for="salary">Salary</label>
 			<input type="number" name="salary" />
 		</div>
-		<div>
-			<label for="">Pay Day</label>
+		<div class="flex flex-col">
+			<label class="mb-2" for="pay_day">Pay Day</label>
 			<input type="date" name="pay_day" />
 		</div>
-		<div>
-			<label for="">Bonus</label>
+		<div class="flex flex-col">
+			<label class="mb-2" for="bonus">Bonus</label>
 			<input type="number" name="bonus" />
 		</div>
-
-		<div class="flex col-span-2">
+		<div class="flex col-span-2 justify-end">
 			<button class="bg-blue-500 rounded-md px-6 py-3 text-white" type="submit">Add Employee</button>
 		</div>
 	</form>

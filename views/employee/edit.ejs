@@ -1,25 +1,27 @@
-<form action="/employee/update/<%=employee.id%>" method="post">
-	<div>
-		<label for="">First Name</label>
-		<input type="text" name="first_nm" value="<%=employee.first_nm%>" />
-	</div>
-	<div>
-		<label for="">Last Name</label>
-		<input type="text" name="last_nm" value="<%=employee.last_nm%>" />
-	</div>
-	<div>
-		<label for="">Salary</label>
-		<input type="number" name="salary" value="<%=employee.salary%>" />
-	</div>
-	<div>
-		<label for="">Pay Day</label>
-		<input type="date" name="pay_day" value="<%=employee.pay_day%>" />
-	</div>
-	<div>
-		<label for="">Bonus</label>
-		<input type="number" name="bonus" value="<%=employee.bonus%>" />
-	</div>
-	<div>
-		<button type="submit">Edit Employee</button>
-	</div>
-</form>
+<div class="w-1/2 mx-auto mt-10">
+	<form class="grid grid-cols-2 gap-4" action="/employee/update/<%=employee.id%>" method="post">
+		<div class="flex flex-col">
+			<label class="mb-2" for="first_nm">First Name</label>
+			<input type="text" name="first_nm" value="<%=employee.first_nm%>" />
+		</div>
+		<div class="flex flex-col">
+			<label class="mb-2" for="last_nm">Last Name</label>
+			<input type="text" name="last_nm" value="<%=employee.last_nm%>" />
+		</div>
+		<div class="flex flex-col">
+			<label class="mb-2" for="salary">Salary</label>
+			<input type="number" name="salary" value="<%=employee.salary%>" />
+		</div>
+		<div class="flex flex-col">
+			<label class="mb-2" for="pay_day">Pay Day</label>
+			<input type="date" name="pay_day" value="<%=employee.pay_day%>" />
+		</div>
+		<div class="flex flex-col">
+			<label class="mb-2" for="bonus">Bonus</label>
+			<input type="number" name="bonus" value="<%=employee.bonus%>" />
+		</div>
+		<div class="flex col-span-2 justify-end">
+			<button class="bg-blue-500 rounded-md px-6 py-3 text-white" type="submit">Edit Employee</button>
+		</div>
+	</form>
+</div>
